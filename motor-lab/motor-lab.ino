@@ -64,7 +64,6 @@ void loop() {
         }
         else if(response.equals("true")) {
             photoValue = analogRead(34);
-            //Serial.println(photoValue);
             delay(100);
             if (photoValue > 3000) {
               //sun
@@ -72,7 +71,6 @@ void loop() {
               if(currentMillis - previousMillis > interval) {
                 previousMillis = currentMillis;
                 long randDirection = random(2);
-                Serial.println(randDirection);
                 directionValue = int(randDirection);
               }
               
@@ -82,7 +80,7 @@ void loop() {
               //if more than 2048, clockwise rotates, otherwise, counter clockwise rotates
               rotationSpeed = speedVal - 2048;
           
-              if (constSpeed > 2048) {
+              if (directionValue == 1) {
                 rotationDir = true;
               } else {
                 rotationDir = false;
